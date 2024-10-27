@@ -76,6 +76,7 @@ class AlienInvasion:
             self.settings.initialize_dynamic_settings()
             pygame.mouse.set_visible(False)
             self.sb.prep_score()
+            self.sb.prep_level()
 
     def _check_keydown_events(self, event):
         """Respond to keypresses."""
@@ -131,6 +132,9 @@ class AlienInvasion:
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+            self.stats.level += 1
+            self.sb.prep_level()
+
         if collisions:
             for aliens in collisions.values():
                 for alien in aliens:
